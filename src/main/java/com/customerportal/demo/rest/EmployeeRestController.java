@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.customerportal.demo.dao.EmployeeDAO;
 import com.customerportal.demo.entity.Employee;
+import com.customerportal.demo.service.EmployeeService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,16 +18,25 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class EmployeeRestController {
 	
-	private EmployeeDAO employeeDAO;
+	private EmployeeService employeeService;
+	
+	//private EmployeeDAO employeeDAO;
 		// Quick and Dirty: Inject employee DAO
+//	@Autowired
+//	public EmployeeRestController(EmployeeDAO theEmployeeDAO) {		
+//		employeeDAO =theEmployeeDAO;
+//	}
+	//Refactored the code to use employee service
 	@Autowired
-	public EmployeeRestController(EmployeeDAO theEmployeeDAO) {		
-		employeeDAO =theEmployeeDAO;
+	public EmployeeRestController(EmployeeService theEmployeeService) {		
+		employeeService =theEmployeeService;
 	}
+	
 	// Expose "/employees" and return list of employees
 	@GetMapping("/employees")
 	public List<Employee> findAll(){
-		return employeeDAO.findAll();
+		//return employeeDAO.findAll();
+		return employeeService.findAll();
 	}
 	
 	@GetMapping("/hello")
