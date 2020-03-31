@@ -8,6 +8,7 @@ public class CustomerportalApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CustomerportalApplication.class, args);
+		System.out.println("Running Springboot Application");
 	}
 
 }
