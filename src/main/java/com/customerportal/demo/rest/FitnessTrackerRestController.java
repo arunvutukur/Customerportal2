@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.customerportal.demo.entity.fitness_tracker;
+import com.customerportal.demo.entity.fitness;
 import com.customerportal.demo.service.fitnessTrackerService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,14 +32,14 @@ public class FitnessTrackerRestController {
 	}
 	
 	@GetMapping("/food")
-	public List<fitness_tracker> findAll(){
+	public List<fitness> findAll(){
 
 		return fitnessTrackerService.findAll();
 	}	
 	@GetMapping("/food/{foodId}")
-	public fitness_tracker getEmployee(@PathVariable int foodId) {
+	public fitness getEmployee(@PathVariable int foodId) {
 		
-		fitness_tracker thefitness_tracker =fitnessTrackerService.findById(foodId);
+		fitness thefitness_tracker =fitnessTrackerService.findById(foodId);
 		
 		if( thefitness_tracker ==null) {
 			throw new RuntimeException("the employee is not found " + foodId);

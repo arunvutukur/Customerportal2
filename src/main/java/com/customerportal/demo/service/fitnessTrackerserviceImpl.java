@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import com.customerportal.demo.entity.fitness_tracker;
+import com.customerportal.demo.entity.fitness;
 import  com.customerportal.demo.dao.fitnessTrackerDAO;
 
 
@@ -26,19 +26,19 @@ public class fitnessTrackerserviceImpl implements fitnessTrackerService {
 	}
 
 	@Override
-	public List<fitness_tracker> findAll() {
+	public List<fitness> findAll() {
 		
 		return fitnessTrackerDAO.findAll();
 	}
 
 	@Override
-	public fitness_tracker findById(int theId) {
+	public fitness findById(int theId) {
 	
 		return fitnessTrackerDAO.findById(theId);
 	}
 
 	@Override
-	public void save(fitness_tracker thefitness_tracker) {
+	public void save(fitness thefitness_tracker) {
 	
 		fitnessTrackerDAO.save(thefitness_tracker);
 	}
@@ -49,37 +49,6 @@ public class fitnessTrackerserviceImpl implements fitnessTrackerService {
 		fitnessTrackerDAO.deleteById(theId);
 		
 	}
-
-//	@Override
-//	@Transactional
-//	public List<Employee> findAll() {
-//	
-//		return employeeDAO.findAll();
-//	}
-//
-//	@Override
-//	@Transactional
-//	public Employee findById(int theId) {
-//	
-//		return employeeDAO.findById(theId);
-//	}
-//
-//	@Override
-//	@Transactional
-//	public void save(Employee theEmployee) {
-//		employeeDAO.save(theEmployee);
-//		
-//	}
-//
-//	@Override
-//	@Transactional
-//	public void deleteById(int theId) {
-//		employeeDAO.deleteById(theId);
-//		
-//	}
-	
-	
-	
 	
 
 }

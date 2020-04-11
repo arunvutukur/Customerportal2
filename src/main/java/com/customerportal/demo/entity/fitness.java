@@ -11,17 +11,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="fitness_tracker")
-public class fitness_tracker {
+public class fitness {
 
 	
-	  public fitness_tracker(String food_name, int calories, String schedule, String day, int exercise) {		  
+	  public fitness(String food_name, int calories, String schedule, String day, int exercise) {		  
 	  this.food_name = food_name;
 	  this.calories = calories; 
 	  this.schedule = schedule; 
 	  this.day = day; 
 	  this.exercise = exercise; }
 	  
-	  public fitness_tracker() { }
+	  public fitness() { }
 	 
 	
 	@Id
