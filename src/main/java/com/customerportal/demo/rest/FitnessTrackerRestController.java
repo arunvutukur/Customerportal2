@@ -23,26 +23,19 @@ import lombok.extern.slf4j.Slf4j;
 public class FitnessTrackerRestController {
 	
 	private fitnessTrackerService fitnessTrackerService;
-	
-	//private EmployeeDAO employeeDAO;
-		// Quick and Dirty: Inject employee DAO
-//	@Autowired
-//	public EmployeeRestController(EmployeeDAO theEmployeeDAO) {		
-//		employeeDAO =theEmployeeDAO;
-//	}
+
 	//Refactored the code to use employee service
 	@Autowired
-	public FitnessTrackerRestController(fitnessTrackerService thefitnessTrackerService) {		
+	public FitnessTrackerRestController(fitnessTrackerService thefitnessTrackerService) {	
+		
 		fitnessTrackerService =thefitnessTrackerService;
 	}
 	
-	// Expose "/employees" and return list of employees
 	@GetMapping("/food")
 	public List<fitness_tracker> findAll(){
-		//return employeeDAO.findAll();
+
 		return fitnessTrackerService.findAll();
-	}
-	
+	}	
 	@GetMapping("/food/{foodId}")
 	public fitness_tracker getEmployee(@PathVariable int foodId) {
 		
@@ -55,30 +48,7 @@ public class FitnessTrackerRestController {
 		return thefitness_tracker;		
 	}
 
-	/*
-	 * @PutMapping("/employees") public Employee addEmployee(@RequestBody Employee
-	 * theEmployee) {
-	 * 
-	 * 
-	 * //this is to force save of new item...instead of update and also just set
-	 * incase they pass any id //in Json so set id to 0 theEmployee.setId(0);
-	 * employeeService.save(theEmployee); return theEmployee;
-	 * 
-	 * }
-	 * 
-	 * @DeleteMapping("/employees/{employeeId}") public String
-	 * deleteEmployee(@PathVariable int employeeId){
-	 * 
-	 * Employee theEmployee =employeeService.findById(employeeId);
-	 * 
-	 * if( theEmployee ==null) { throw new
-	 * RuntimeException("the employee id not found " + employeeId); }
-	 * 
-	 * employeeService.deleteById(employeeId); return "Deleted EmployeeId "
-	 * +employeeId;
-	 * 
-	 * }
-	 */
+
 	
 	
 	@GetMapping("/hello")
