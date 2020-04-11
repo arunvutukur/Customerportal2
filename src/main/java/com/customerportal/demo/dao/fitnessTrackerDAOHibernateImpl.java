@@ -9,56 +9,56 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.customerportal.demo.entity.Employee;
+import com.customerportal.demo.entity.fitness_tracker;
 
 @Repository
-public class EmployeeDAOHibernateImpl implements EmployeeDAO {
+public class fitnessTrackerDAOHibernateImpl implements fitnessTrackerDAO {
 
 	
 	//Define field for entity manager
 	private EntityManager entityManager;
 	
 	@Autowired
-	public EmployeeDAOHibernateImpl(EntityManager theEntityManager) {
+	public fitnessTrackerDAOHibernateImpl(EntityManager theEntityManager) {
 		entityManager = theEntityManager;
 	}
 				
 	
 	@Override
-	public List<Employee> findAll() {
+	public List<fitness_tracker> findAll() {
 
 		//get the current hibernate session
 		Session currentSession =entityManager.unwrap(Session.class);
 		//create a query
-		Query<Employee> theQuery =currentSession.createQuery("from Employee", Employee.class);
+		Query<fitness_tracker> theQuery =currentSession.createQuery("from fitness_tracker", fitness_tracker.class);
 		//execute query and get result list
-		List<Employee> employees =theQuery.getResultList();
+		List<fitness_tracker> employees =theQuery.getResultList();
 		//return the results			
 		return employees;
 	}
 
 
 	@Override
-	public Employee findById(int theId) {
+	public fitness_tracker findById(int theId) {
 		//Get the current hibernate session
 		Session currentSession =entityManager.unwrap(Session.class);
 		
 		//Get the employee
-		Employee theEmployee=
-				currentSession.get(Employee.class, theId);
+		fitness_tracker thefitness_tracker=
+				currentSession.get(fitness_tracker.class, theId);
+		
 		//return the employee
-		return theEmployee;
+		return thefitness_tracker;
 	}
 
 
 	@Override
-	public void save(Employee theEmployee) {
+	public void save(fitness_tracker thefitness_tracker) {
 		//Get the current hibernate session
 			Session currentSession =entityManager.unwrap(Session.class);
 				
 		//Save Employee
-			currentSession.saveOrUpdate(theEmployee);
+			currentSession.saveOrUpdate(thefitness_tracker);
 	}
 
 
@@ -70,8 +70,8 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 		
 		//Delete object with primary key
 		Query theQuery=
-				currentSession.createQuery("delete from Employee where id =:employeeId");
-		theQuery.setParameter("employeeId", theId);
+				currentSession.createQuery("delete from fitness_tracker where id =:fitness_trackerId");
+		theQuery.setParameter("fitness_trackerId", theId);
 		
 		theQuery.executeUpdate();
 	}
